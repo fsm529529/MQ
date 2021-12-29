@@ -1,0 +1,30 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: order-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/orders
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.xa.DruidXADataSource
+    druid:
+      initial-size: 2
+      max-active: 3
+  rabbitmq:
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    #这里是开启手动ack，让程序去控制MQ消息的重复、删除和转移
+    listener:
+      simple:
+        acknowledge-mode: manual
+    publisher-returns: true
+    publisher-confirm-type: correlated
+    #NONE禁用发布确定模式，默认值
+    #correlated 成功发布消息到交换机后触发回调方法
+    #simple
+    #
+

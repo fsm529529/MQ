@@ -1,0 +1,19 @@
+
+create database orders;
+
+CREATE TABLE `my_order` (
+  `order_id` varchar(20) DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  `order_content` varchar(200) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL
+);
+
+CREATE TABLE `order_message` (
+  `order_id` varchar(100) DEFAULT NULL,
+  `status` int DEFAULT NULL,
+  `order_content` varchar(500) DEFAULT NULL,
+  `unique_id` varchar(45) DEFAULT NULL
+);
+
+select *from  my_order; //订单表
+select *from order_message; //订单冗余表

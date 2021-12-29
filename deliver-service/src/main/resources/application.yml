@@ -1,0 +1,27 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: delivery-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/delivery
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.xa.DruidXADataSource
+    druid:
+      initial-size: 2
+      max-active: 3
+  rabbitmq:
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    #这里是开启手动ack，让程序去控制MQ消息的重复、删除和转移
+    listener:
+      simple:
+        acknowledge-mode: manual # manual意思是开启手动ack,让程序去控制MQ消息的重发、删除、转移（acknowledge-mode默认值为none，自动ack）
+        retry:
+          enabled: true #开启重试
+          max-attempts: 3 #重试最大次数
+          initial-interval: 2000ms #重试最大间隔

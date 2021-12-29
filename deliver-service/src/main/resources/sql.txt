@@ -1,0 +1,14 @@
+
+create database delivery;
+CREATE TABLE `my_delivery` (
+  `delivery_id` varchar(100) DEFAULT NULL,
+  `order_id` varchar(100) DEFAULT NULL,
+  `status` int DEFAULT NULL,
+  `order_content` varchar(200) DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  `create_time` datetime NOT NULL,
+  PRIMARY KEY (`order_id`)
+);
+
+select *From my_delivery;
+truncate my_delivery;
